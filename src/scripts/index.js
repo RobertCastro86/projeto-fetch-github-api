@@ -1,4 +1,5 @@
-import { baseUrl, repositoriesQuantity } from '/src/scripst/variables.js'
+import { getUser } from '/src/scripts/services/user.js'
+import { getUserRepositories } from './services/repositories';
 
 document.getElementById('btn-search').addEventListener('click', () => {
   const userName = document.getElementById('input-search').value;
@@ -18,21 +19,6 @@ document.getElementById('input-search').addEventListerner('keyup', (e) => {
 }
 });
 
-async function getUser(userName) {
-  const response = await fetch(`${baseUrl}/${userName}`);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return await response.json();
-}
-
-async function getRepos(userName) {
-  const response = await fetch(`https://api.github.com/users/${userName}/repos`);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return await response.json();
-}
 
 async function getUserProfile(userName){
   try {
@@ -47,7 +33,7 @@ async function getUserProfile(userName){
 
       document.querySelector('.profile-data').innerHTML = userInfo;
 
-      const reposData = await getRepos(userName);
+      const reposData = await getUserRepositories(userName);
 
       let repositoriesItens = '<h2>Repositórios</h2><ul>';
       reposData.forEach(repo => {
