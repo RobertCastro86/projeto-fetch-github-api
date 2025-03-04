@@ -1,4 +1,4 @@
-import { getUser } from '/src/scripts/services/user.js'
+import { getUser } from '../src/scripts/objects/user.js'
 import { getUserRepositories } from './services/repositories';
 
 document.getElementById('btn-search').addEventListener('click', () => {
@@ -8,8 +8,8 @@ document.getElementById('btn-search').addEventListener('click', () => {
 
 document.getElementById('input-search').addEventListerner('keyup', (e) => {
   const userName = e.target.value;
-  const key = e.key;
-  const isEnterKeyPressed = key === "Enter";
+  const key = e.witch || e.keycode;
+  const isEnterKeyPressed = key === 13;
   
   if(isEnterKeyPressed){
     clearTimeout(timeoutId);
@@ -24,11 +24,12 @@ async function getUserProfile(userName){
   try {
     const userData = await getUser(userName);
 
-    let userInfo = `
+    let userInfo = `<div class="info">
       <img src="${userData.avatar_url}" alt="foto do perfil do usuario" />
       <div class="data">
          <h1>${userData.name ?? 'Não possui nome cadastrado'}</h1>
-         <p>${userData.bio ?? 'Não possui bio cadastrado'}</p>
+         <p>${userData.bio ?? 'Não possui bio cadastrada'}</p>
+      </div>
       </div>`;
 
       document.querySelector('.profile-data').innerHTML = userInfo;
@@ -41,7 +42,9 @@ async function getUserProfile(userName){
       });
       repositoriesItens += '</ul>';
 
-      document.querySelector('.profile-data').innerHTML += repositoriesItens;
+      document.querySelector('.profile-data').innerHTML +=`<div class="repositories section">
+      <h2>Repositórios</h2>
+      <ul>${repositoriesItens}</ul></div>`;
   } catch(error){
     console.error(error);
     document.querySelector('.profile-data').innerHTML = "<p>Usuário não encontrado</p>";
