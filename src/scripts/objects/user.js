@@ -12,5 +12,6 @@ const user = {
   },
   setRepositories(repositories) {
     this.repositories = repositories;
-}  }
-export default user;
+  }  
+}
+export { user }
