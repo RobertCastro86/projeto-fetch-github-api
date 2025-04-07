@@ -41,4 +41,4 @@ Desenvolver habilidades práticas em consumo de APIs, organização de código e
 ## 🌐 Como Utilizar
 1. Faça o clone do repositório:
    ```bash
-   git clone <URL-do-repositório>
+   git clone https://github.com/RobertCastro86/projeto-fetch-github-api.git
