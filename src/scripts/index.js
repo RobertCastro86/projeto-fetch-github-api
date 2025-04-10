@@ -1,6 +1,6 @@
 // Autor: Robert Castro
 import { getUser } from '/src/scripts/services/user.js';
-import { getRepositories } from '/src/scripts/services/repositories.js';
+import { getRepositories } from './services/repositories.js';
 
 import { screen } from '/src/scripts/objects/screen.js';
 import { user } from '/src/scripts/objects/user.js'
