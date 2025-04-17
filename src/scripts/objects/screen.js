@@ -4,10 +4,16 @@ const screen = {
     this.userProfile.innerHTML = `<div class="info">
       <img src="${user.avatarUrl}" alt="foto do perfil do usuario" />
       <div class="data">
-       <h1>${user.name ?? 'Não possui nome cadastrado'}</h1>
-       <p>${user.bio ?? 'Não possui bio cadastrado'}</p>
+        <h1>${user.name ?? 'Não possui nome cadastrado'}</h1>
+        <p>Login: <span>@${user.userName}</span></p>
+        <p>${user.bio ?? 'Não possui bio cadastrado'}</p>
+        <div class="follow-info">
+          <p>👥 <span>${user.followers}</span> seguidores</p>
+          <p>👤 <span>${user.following}</span> seguindo</p>
+        </div>
       </div>
-      </div>`
+    </div>`
+    
     let repositoriesItens = ''
     user.repositories.forEach( repo => repositoriesItens +=`<li><a href="${repo.html_url}"target="_blank">${repo.name}</li>`)
         

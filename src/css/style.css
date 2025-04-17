@@ -193,3 +193,44 @@ main {
     padding: 0;
   }
 }
+
+/*para numero de seguidores*/
+
+.container .profile-data .info .data p {
+  font-size: 15px;  
+  font-weight: 400;
+  line-height: 23px;
+  margin-bottom: 10px;
+}
+
+.container .profile-data .info .data p span {
+  font-weight: 700;
+}
+
+.container .profile-data .info .data .follow-info {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.container .profile-data .info .data .follow-info p {
+  background-color: #f5f5f5;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.container .profile-data .info .data .follow-info p span {
+  font-weight: 700;
+  color: hotpink;
+}
+
+@media (max-width: 600px) {
+  .container .profile-data .info .data .follow-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
